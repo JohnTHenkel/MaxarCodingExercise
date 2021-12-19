@@ -8,7 +8,7 @@ import GeoJSON from 'ol/format/GeoJSON';
 
 const data = new VectorSource({
   format: new GeoJSON(),
-  url: 'http://localhost:8080/data',
+  url: 'https://us-central1-maxarcodingexercise.cloudfunctions.net/app/data',
 })
 data.on('change', function(evt) {
   map.getView().fit(data.getExtent(), map.getSize());
