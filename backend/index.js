@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const fs = require('fs');
 
 const PORT = 8080
 const app = express()
+app.use(cors())
 
 const data = fs.readFileSync('Wellington_21Q3_V0_AOI.geojson')
 const jsonData = JSON.parse(data);
