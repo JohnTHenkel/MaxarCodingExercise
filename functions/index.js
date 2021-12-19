@@ -15,4 +15,8 @@ app.get('/data', (req,res) => {
     res.status(200).send(jsonData)
 })
 
+app.get('/', (req,res) => {
+    res.status(200).send("Welcome to the API for the maxar coding exercise. GET /data for json from the project.")
+})
+
 exports.app = functions.https.onRequest(app)
