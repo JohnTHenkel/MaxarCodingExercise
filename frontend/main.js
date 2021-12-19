@@ -6,6 +6,13 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
 
+const data = new VectorSource({
+  format: new GeoJSON(),
+  url: 'http://localhost:8080/data',
+})
+data.on('change', function(evt) {
+  map.getView().fit(data.getExtent(), map.getSize());
+})
 
 const map = new Map({
   target: 'map',
@@ -14,10 +21,7 @@ const map = new Map({
       source: new OSM()
     }),
     new VectorLayer({
-      source: new VectorSource({
-        format: new GeoJSON(),
-        url: "http://localhost:8080/data"
-      })
+      source: data
     }),
   ],
   view: new View({
